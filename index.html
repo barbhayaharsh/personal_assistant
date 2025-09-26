@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Harsh — Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f1724; --card:#0b1220; --muted:#9aa4b2; --accent:#5eead4; --white:#e6eef6;
+    }
+    *{box-sizing:border-box}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;margin:0;background:linear-gradient(180deg,var(--bg) 0%,#071023 100%);color:var(--white);line-height:1.5}
+    .container{max-width:1000px;margin:40px auto;padding:24px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#60a5fa);display:flex;align-items:center;justify-content:center;font-weight:700;color:#032;box-shadow:0 8px 20px rgba(5,10,20,0.6)}
+    nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-weight:600}
+    .hero{display:grid;grid-template-columns:1fr 360px;gap:28px;margin-top:28px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:22px;border-radius:14px;box-shadow:0 6px 30px rgba(2,6,23,0.6);}
+    .intro h1{margin:0;font-size:34px}
+    .intro p{color:var(--muted)}
+    .cta{margin-top:18px;display:flex;gap:12px}
+    .btn{padding:10px 14px;border-radius:10px;border:0;background:var(--accent);color:#022;font-weight:700;cursor:pointer}
+    .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--white)}
+    .avatar{width:100%;height:100%;border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#082033,#0d1622);}
+    .section{margin-top:22px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .skills{display:flex;gap:10px;flex-wrap:wrap}
+    .skill{background:rgba(255,255,255,0.03);padding:8px 10px;border-radius:10px;font-weight:600}
+    .projects .proj{padding:14px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);}
+    footer{margin-top:30px;color:var(--muted);text-align:center}
+    /* Responsive */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:560px){
+      .grid-3{grid-template-columns:1fr}
+      nav a{display:none}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">H</div>
+        <div>
+          <div style="font-weight:700">Harsh</div>
+          <div style="font-size:12px;color:var(--muted)">Web Developer • Designer • Problem Solver</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <div class="hero">
+      <div class="card intro">
+        <h1>Hi — I'm Harsh</h1>
+        <p>I'm a web developer building clean, accessible websites and web apps. I love turning ideas into working products and learning new things along the way.</p>
+        <div class="cta">
+          <a class="btn" href="#projects">See my work</a>
+          <a class="btn secondary" href="#contact">Hire me</a>
+        </div>
+
+        <div class="section" id="about">
+          <h3>About</h3>
+          <p style="color:var(--muted)">I build responsive frontends and small full‑stack apps. Currently focused on JavaScript, HTML, CSS, and user-centered UI design. Open to freelance work and collaboration.</p>
+        </div>
+
+        <div class="section" id="skills">
+          <h3>Skills</h3>
+          <div class="skills">
+            <div class="skill">HTML</div>
+            <div class="skill">CSS</div>
+            <div class="skill">JavaScript</div>
+            <div class="skill">React</div>
+            <div class="skill">Node.js</div>
+            <div class="skill">Git</div>
+            <div class="skill">UI/UX</div>
+          </div>
+        </div>
+
+      </div>
+
+      <aside class="card avatar">
+        <!-- Replace with your photo or leave gradient -->
+        <div style="text-align:center;padding:18px">
+          <div style="font-size:18px;font-weight:700">Harsh</div>
+          <div style="color:var(--muted);margin-top:8px">Frontend Developer</div>
+          <div style="margin-top:14px;color:var(--muted);font-size:13px">Based in India</div>
+          <div style="margin-top:18px">
+            <a class="btn" href="#contact">Contact</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <section class="section projects card" id="projects">
+      <h3>Selected projects</h3>
+      <div class="grid-3" style="margin-top:12px">
+        <div class="proj">
+          <h4>Portfolio Website</h4>
+          <p style="color:var(--muted);font-size:13px">A single-page responsive portfolio built with HTML/CSS and a tiny JS for smooth scroll.</p>
+          <p style="margin-top:8px;font-size:13px"><strong>Tech:</strong> HTML • CSS • JS</p>
+        </div>
+        <div class="proj">
+          <h4>Task Manager</h4>
+          <p style="color:var(--muted);font-size:13px">A small CRUD app to track tasks and due dates; uses localStorage for persistence.</p>
+          <p style="margin-top:8px;font-size:13px"><strong>Tech:</strong> React • Firebase</p>
+        </div>
+        <div class="proj">
+          <h4>E‑commerce UI</h4>
+          <p style="color:var(--muted);font-size:13px">A modern e‑commerce product listing and cart UI with focus on accessibility.</p>
+          <p style="margin-top:8px;font-size:13px"><strong>Tech:</strong> Next.js • Tailwind</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section card" id="contact">
+      <h3>Contact</h3>
+      <p style="color:var(--muted)">Want to work together? Send a message — I'll reply as soon as I can.</p>
+      <form style="margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:10px" onsubmit="event.preventDefault();alert('Thanks — message sent (demo).')">
+        <input placeholder="Your name" required style="padding:10px;border-radius:8px;border:0;background:rgba(255,255,255,0.025);color:var(--white)" />
+        <input placeholder="Your email" type="email" required style="padding:10px;border-radius:8px;border:0;background:rgba(255,255,255,0.025);color:var(--white)" />
+        <textarea placeholder="Message" required style="grid-column:1/-1;padding:12px;border-radius:8px;border:0;background:rgba(255,255,255,0.025);color:var(--white);min-height:110px"></textarea>
+        <button class="btn" style="grid-column:1/-1">Send message</button>
+      </form>
+    </section>
+
+    <footer>
+      <div>© <span id="year"></span> Harsh — Built with ❤️</div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
