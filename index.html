@@ -10,25 +10,34 @@
       --bg:#0f1724; --card:#0b1220; --muted:#9aa4b2; --accent:#5eead4; --white:#e6eef6;
     }
     *{box-sizing:border-box}
-    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;margin:0;background:linear-gradient(180deg,var(--bg) 0%,#071023 100%);color:var(--white);line-height:1.5}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;margin:0;background:linear-gradient(180deg,var(--bg) 0%,#071023 100%);color:var(--white);line-height:1.5;scroll-behavior:smooth}
     .container{max-width:1000px;margin:40px auto;padding:24px}
-    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#60a5fa);display:flex;align-items:center;justify-content:center;font-weight:700;color:#032;box-shadow:0 8px 20px rgba(5,10,20,0.6)}
-    nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-weight:600}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;position:sticky;top:0;background:rgba(15,23,36,0.85);backdrop-filter:blur(10px);padding:10px 20px;border-radius:12px;z-index:100}
+    .brand{display:flex;align-items:center;gap:12px;cursor:pointer;transition:transform .3s}
+    .brand:hover{transform:scale(1.05)}
+    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#60a5fa);display:flex;align-items:center;justify-content:center;font-weight:700;color:#032;box-shadow:0 8px 20px rgba(5,10,20,0.6);animation:spinLogo 6s linear infinite}
+    @keyframes spinLogo{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+    nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-weight:600;position:relative}
+    nav a::after{content:'';position:absolute;left:0;bottom:-4px;width:0;height:2px;background:var(--accent);transition:width .3s}
+    nav a:hover::after{width:100%}
     .hero{display:grid;grid-template-columns:1fr 360px;gap:28px;margin-top:28px}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:22px;border-radius:14px;box-shadow:0 6px 30px rgba(2,6,23,0.6);}
-    .intro h1{margin:0;font-size:34px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:22px;border-radius:14px;box-shadow:0 6px 30px rgba(2,6,23,0.6);transition:transform .3s,box-shadow .3s}
+    .card:hover{transform:translateY(-6px);box-shadow:0 12px 35px rgba(2,6,23,0.8)}
+    .intro h1{margin:0;font-size:34px;animation:fadeIn 1s ease}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
     .intro p{color:var(--muted)}
     .cta{margin-top:18px;display:flex;gap:12px}
-    .btn{padding:10px 14px;border-radius:10px;border:0;background:var(--accent);color:#022;font-weight:700;cursor:pointer}
+    .btn{padding:10px 14px;border-radius:10px;border:0;background:var(--accent);color:#022;font-weight:700;cursor:pointer;transition:transform .2s}
+    .btn:hover{transform:scale(1.05)}
     .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--white)}
     .avatar{width:100%;height:100%;border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#082033,#0d1622);}
     .section{margin-top:22px}
     .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
     .skills{display:flex;gap:10px;flex-wrap:wrap}
-    .skill{background:rgba(255,255,255,0.03);padding:8px 10px;border-radius:10px;font-weight:600}
-    .projects .proj{padding:14px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);}
+    .skill{background:rgba(255,255,255,0.03);padding:8px 10px;border-radius:10px;font-weight:600;transition:background .3s}
+    .skill:hover{background:var(--accent);color:#022}
+    .projects .proj{padding:14px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);cursor:pointer;transition:transform .3s,background .3s}
+    .projects .proj:hover{transform:scale(1.05);background:rgba(255,255,255,0.05)}
     footer{margin-top:30px;color:var(--muted);text-align:center}
     /* Responsive */
     @media (max-width:900px){
@@ -44,7 +53,7 @@
 <body>
   <div class="container">
     <header>
-      <div class="brand">
+      <div class="brand" onclick="window.scrollTo({top:0,behavior:'smooth'})">
         <div class="logo">H</div>
         <div>
           <div style="font-weight:700">Harsh</div>
@@ -61,7 +70,7 @@
 
     <div class="hero">
       <div class="card intro">
-        <h1>Hi — I'm Harsh</h1>
+        <h1>Hi — I'm Harsh 👋</h1>
         <p>I'm a web developer building clean, accessible websites and web apps. I love turning ideas into working products and learning new things along the way.</p>
         <div class="cta">
           <a class="btn" href="#projects">See my work</a>
@@ -89,7 +98,6 @@
       </div>
 
       <aside class="card avatar">
-        <!-- Replace with your photo or leave gradient -->
         <div style="text-align:center;padding:18px">
           <div style="font-size:18px;font-weight:700">Harsh</div>
           <div style="color:var(--muted);margin-top:8px">Frontend Developer</div>
@@ -104,17 +112,17 @@
     <section class="section projects card" id="projects">
       <h3>Selected projects</h3>
       <div class="grid-3" style="margin-top:12px">
-        <div class="proj">
+        <div class="proj" onclick="alert('Opening project: Portfolio Website (demo).')">
           <h4>Portfolio Website</h4>
           <p style="color:var(--muted);font-size:13px">A single-page responsive portfolio built with HTML/CSS and a tiny JS for smooth scroll.</p>
           <p style="margin-top:8px;font-size:13px"><strong>Tech:</strong> HTML • CSS • JS</p>
         </div>
-        <div class="proj">
+        <div class="proj" onclick="alert('Opening project: Task Manager (demo).')">
           <h4>Task Manager</h4>
           <p style="color:var(--muted);font-size:13px">A small CRUD app to track tasks and due dates; uses localStorage for persistence.</p>
           <p style="margin-top:8px;font-size:13px"><strong>Tech:</strong> React • Firebase</p>
         </div>
-        <div class="proj">
+        <div class="proj" onclick="alert('Opening project: E-commerce UI (demo).')">
           <h4>E‑commerce UI</h4>
           <p style="color:var(--muted);font-size:13px">A modern e‑commerce product listing and cart UI with focus on accessibility.</p>
           <p style="margin-top:8px;font-size:13px"><strong>Tech:</strong> Next.js • Tailwind</p>
@@ -134,7 +142,7 @@
     </section>
 
     <footer>
-      <div>© <span id="year"></span> Harsh — Built with ❤️</div>
+      <div>© <span id="year"></span> Harsh — Built with ❤️ | <a href="#" style="color:var(--accent);text-decoration:none">Back to top</a></div>
     </footer>
   </div>
 
